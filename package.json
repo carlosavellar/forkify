@@ -1,0 +1,15 @@
+{
+  "name": "forkify-js",
+  "version": "1.0.0",
+  "description": "Udemy Js Project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
