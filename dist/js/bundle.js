@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tests */ \"./src/js/tests.js\");\n// Global app controller\n\nconsole.log(`${_tests__WEBPACK_IMPORTED_MODULE_0__[\"default\"]} Saoa materior`);\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tests */ \"./src/js/tests.js\");\n// Global app controller\n\ndocument.write(`${_tests__WEBPACK_IMPORTED_MODULE_0__[\"default\"]} Saoa materior`);\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tes
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconsole.log(\"Hi, i am a module\");\n/* harmony default export */ __webpack_exports__[\"default\"] = (12);\n\n//# sourceURL=webpack:///./src/js/tests.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconsole.log(\"Hi, i am a module\");\n/* harmony default export */ __webpack_exports__[\"default\"] = (' Mafia');\n\n//# sourceURL=webpack:///./src/js/tests.js?");
 
 /***/ })
 

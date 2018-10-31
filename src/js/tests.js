@@ -1,2 +1,2 @@
 console.log("Hi, i am a module");
-export default 133;
+export default ' Mafia MS13';
