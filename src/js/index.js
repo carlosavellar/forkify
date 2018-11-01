@@ -1,3 +1,4 @@
 // Global app controller
 import num from './tests';
-document.write(`${num}, Saa matwwwwwwwerior`);
+const x = 23;
+console.log(`${num}, Saa matwwwwwwwerior x is ${x}`);

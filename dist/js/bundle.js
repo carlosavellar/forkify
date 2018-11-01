@@ -90,11 +90,11 @@
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tests */ \"./src/js/tests.js\");\n// Global app controller\n\ndocument.write(`${_tests__WEBPACK_IMPORTED_MODULE_0__[\"default\"]} Saoa materior`);\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("\n\nvar _tests = __webpack_require__(/*! ./tests */ \"./src/js/tests.js\");\n\nvar _tests2 = _interopRequireDefault(_tests);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar x = 23; // Global app controller\n\nconsole.log(_tests2.default + ', Saa matwwwwwwwerior x is ' + x);\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
@@ -102,11 +102,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tes
 /*!*************************!*\
   !*** ./src/js/tests.js ***!
   \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconsole.log(\"Hi, i am a module\");\n/* harmony default export */ __webpack_exports__[\"default\"] = (' Mafia');\n\n//# sourceURL=webpack:///./src/js/tests.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nconsole.log(\"Hi, i am a module\");\nexports.default = ' Mafia MS13';\n\n//# sourceURL=webpack:///./src/js/tests.js?");
 
 /***/ })
 
