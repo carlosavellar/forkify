@@ -19,6 +19,6 @@
 
 import Search from './models/Search';
 
-const search = new Search('pizza');
+const search = new Search('tomato');
 
 console.log(search);
