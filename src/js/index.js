@@ -17,8 +17,29 @@
 // #Error: Uncaught ReferenceError: regeneratorRuntime is not defined.
 // Solution: https: //babeljs.io/docs/en/babel-plugin-transform-regenerator/
 
-import Search from './models/Search';
 
-const search = new Search('tomato');
+// ** Global state of the app
+  // * Searcj\h object
+  // * Current recipe object
+  // * Shopping list object
+// ** Liked recipes
+import Search from './models/Search';
+const state = {};
+const controlSearch = async () => {
+    const query = 'Pizza';
+    if (query) {
+        state.search = new Search(query);
+        await state.search.getRes();
+        console.log(state.search.recipes);
+    }
+};
+
+
+document.querySelector('.search').addEventListener('submit', e =>{
+    e.preventDefault();
+    controlSearch();
+});
+
+const search = new Search('pizza');
 
 console.log(search);
