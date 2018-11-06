@@ -17,29 +17,16 @@
 // #Error: Uncaught ReferenceError: regeneratorRuntime is not defined.
 // Solution: https: //babeljs.io/docs/en/babel-plugin-transform-regenerator/
 
-
-// ** Global state of the app
-  // * Searcj\h object
-  // * Current recipe object
-  // * Shopping list object
-// ** Liked recipes
-import Search from './models/Search';
-const state = {};
-const controlSearch = async () => {
-    const query = 'Pizza';
-    if (query) {
-        state.search = new Search(query);
-        await state.search.getRes();
-        console.log(state.search.recipes);
+import axios from 'axios';
+async function getResult(query) {
+    const key = '0f23071ff333722d90aea063d80c4c45';
+    const proxy = 'https://cors-anywhere.herokuapp.com';
+    try {
+        const res = await axios(`${proxy}/https://www.food2fork.com/api/search?key=${key}&q=${query}`);
+        const recipes = res.data.recipes;
+        console.log(recipes);
+    } catch (err) {
+        console.log(`${err} Teste`);
     }
-};
-
-
-document.querySelector('.search').addEventListener('submit', e =>{
-    e.preventDefault();
-    controlSearch();
-});
-
-const search = new Search('pizza');
-
-console.log(search);
+}
+getResult('pizza');
