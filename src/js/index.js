@@ -1,20 +1,22 @@
 import Search from './models/Search';
-
 const state = {};
-
-const controlResults = async () => {
+const controlResults = async ()=>{
     const query = 'pizza';
-    if (query) {
+    if(query){
         state.search = new Search(query);
-        await state.search.getResult();
+        await state.search.getResults();
         console.log(state.search.results);
     }
 }
-document.querySelector(".search").addEventListener("submit", e => {
-    console.log("Maquiagem");
+document.querySelector('.search').addEventListener('submit', e=>{
     e.preventDefault();
     controlResults();
 });
+
+
+
+
+
 
 //Import  1
 // import { add, multiply, ID, restDivision}  from './views/searchView';
