@@ -1,7 +1,9 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView.js';
 import {
-    elements
+    elements,
+    rendeLoader,
+    clearLeader
 } from './views/base.js';
 
 const state = {};
@@ -12,10 +14,13 @@ const controlResults = async () => {
     if (query) {
         searchView.clearResult();
         state.search = new Search(query);
-        await state.search.getResults();
-        searchView.clearInput();
-        console.log(state.search.result);
+        rendeLoader(elements.searchRes);
 
+        await state.search.getResults();
+
+        searchView.clearInput();
+
+        clearLeader();
         searchView.renderResult(state.search.result);
 
     }
