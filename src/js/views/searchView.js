@@ -5,6 +5,19 @@ export const clearInput = () => elements.searchInput.value = '';
 
 export const clearResult = () => elements.searchResults.innerHTML = '';
 
+const reduceTitle = (title, limit = 17) => {
+    const newTitle = [];
+    if (title.length > limit) {
+        title.split(" ").reduce((prev, cur) => {
+            if (prev + cur.length  <= limit) {
+                newTitle.push(cur);
+            }
+            return prev + cur.length;
+        }, 0);
+        return `${newTitle.join(' ')} ...`;
+    }
+    return title;
+};
 const renderRecipe = recipe =>{
     const string = `
           <li>
@@ -12,11 +25,14 @@ const renderRecipe = recipe =>{
               <figure class="results__fig">
               <img src="${recipe.image_url}" alt="Test">
               </figure> <div class="results__data">
-              <h4 class="results__name"> ${recipe.title}</h4> 
+              <h4 class="results__name"> ${reduceTitle(recipe.title)}</h4> 
               <p class="results__author"> ${recipe.publisher}</p></div></a></li>
     `;
     elements.searchResults.insertAdjacentHTML("beforeend", string);
 }
+
+
+
 
 export const renderResult = recipes =>{
     recipes.forEach(renderRecipe);
