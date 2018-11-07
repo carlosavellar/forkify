@@ -1,14 +1,17 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView.js';
-import { elements } from './views/Base.js';
-
+import { elements } from './views/base.js';
 const state = {};
 const controlResults = async ()=>{
-    const query = searchView.getInput;
+    console.log(searchView.getInput());
+    const query = searchView.getInput();
     if(query){
         state.search = new Search(query);
         await state.search.getResults();
-        console.log(state.search.results);
+        console.log(state.search.result);
+        searchView.renderResult(state.search.result);
+        
+
     }
 }
 elements.searchForm.addEventListener('submit', e => {
