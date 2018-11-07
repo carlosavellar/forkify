@@ -1,22 +1,31 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView.js';
-import { elements } from './views/base.js';
+import {
+    elements
+} from './views/base.js';
+
 const state = {};
-const controlResults = async ()=>{
+
+const controlResults = async () => {
     console.log(searchView.getInput());
     const query = searchView.getInput();
-    if(query){
+    if (query) {
         state.search = new Search(query);
         await state.search.getResults();
+        searchView.clearInput();
         console.log(state.search.result);
+
         searchView.renderResult(state.search.result);
-        
 
     }
 }
 elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
-    controlResults();
+    if (searchView.getInput() !== '' && searchView.getInput() !== ' ') {
+        controlResults();
+    } else {
+        alert("Caralho");
+    }
 });
 
 
@@ -42,4 +51,3 @@ elements.searchForm.addEventListener('submit', e => {
 
 // #Error: Uncaught ReferenceError: regeneratorRuntime is not defined.
 // Solution: https: //babeljs.io/docs/en/babel-plugin-transform-regenerator/
-

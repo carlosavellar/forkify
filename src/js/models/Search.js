@@ -5,7 +5,7 @@ export default class Search{
         this.query = query;
     }
     async getResults(){
-        const key = '0f23071ff333722d90aea063d80c4c45';
+        const key = '2f79c2fafa205094b251e14ad38182e1';
         const proxy = 'https://cors-anywhere.herokuapp.com/';
         try{
             const res = await axios(`${proxy}https://www.food2fork.com/api/search?key=${key}&q=${this.query}`);
