@@ -10,6 +10,7 @@ const controlResults = async () => {
     console.log(searchView.getInput());
     const query = searchView.getInput();
     if (query) {
+        searchView.clearResult();
         state.search = new Search(query);
         await state.search.getResults();
         searchView.clearInput();
@@ -24,7 +25,7 @@ elements.searchForm.addEventListener('submit', e => {
     if (searchView.getInput() !== '' && searchView.getInput() !== ' ') {
         controlResults();
     } else {
-        alert("Caralho");
+        alert("Caralho! Prrencha essa MERDA FILHA DA PUTA");
     }
 });
 

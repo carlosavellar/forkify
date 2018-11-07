@@ -3,6 +3,8 @@ export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => elements.searchInput.value = '';
 
+export const clearResult = () => elements.searchResults.innerHTML = '';
+
 const renderRecipe = recipe =>{
     const string = `
           <li>
