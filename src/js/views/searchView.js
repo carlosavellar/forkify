@@ -31,45 +31,40 @@ const renderRecipe = recipe =>{
     elements.searchResults.insertAdjacentHTML("beforeend", string);
 }
 
-const createButton = (pages, type) => {
-    const button = `
-                <button class="btn-inline results__btn--${type}">
+const createButton = (page, type) => 
+                `<button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
                     <svg class="search__icon">
                         <use href = "img/icons.svg#icon-triangle-${type === 'left' ? 'prev' : 'right'}"> </use>
                     </svg>
                     <span>Page ${type === 'prev' ? page - 1 : page + 1} </span>
-                </button>
-               <button class="btn-inline results__btn--prev">
-                    <svg class="search__icon">
-                        <use href="img/icons.svg#icon-triangle-left"></use>
-                    </svg>
-                    <span>Page 1</span>
-                </button>
-                <button class="btn-inline results__btn--next">
-                    <span>Page 3</span>
-                    <svg class="search__icon">
-                        <use href="img/icons.svg#icon-triangle-right"></use>
-                    </svg>
                 </button>`;
-}
+
 
 
 const navPages = (page, totalResult, numPerPage) => {
-    const pages = totalResult / numPerPage;
-    if(page === pages && pages > 1){
+    const pages = Math.ceil(totalResult / numPerPage);
+    let button;
+    if(page === 1 && pages > 1){
+        button = createButton(page, 'next');
         // Prev button
-    }else if(page === pages){
+    }else if(page < pages){
+        button = 
+        `${createButton(page, 'prev')}
+        ${createButton(page, 'next')}`;
 
     }else if(page === pages && pages > 1){
-
+        button = createButton(page, 'prev');
     }
+    elements.navPages.insertAdjacentHTML("afterbegin", button);
 }
 
-export const renderResult = (recipes, page = 1, resPerPage = 10  )=>{
+export const renderResult = (recipes, page = 1, resPerPage = 10)=>{
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
      console.log(`${start} end: ${end} `);
     recipes.slice(start, end).forEach(renderRecipe);
+
+    navPages(page, recipes.length, resPerPage);
 }
 // export const add = (a, b ) => a + b;
 // export const multiply = (a, b ) => a * b;

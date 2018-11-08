@@ -23,6 +23,7 @@ const controlResults = async () => {
         clearLeader();
         searchView.renderResult(state.search.result);
 
+
     }
 }
 elements.searchForm.addEventListener('submit', e => {
