@@ -1,18 +1,20 @@
-import { elements } from './base.js';
+import {
+    elements
+} from './base.js';
 export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => elements.searchInput.value = '';
 
 export const clearResult = () => {
     elements.searchResults.innerHTML = '';
-    elements.navPages.innerHTML= '';
+    elements.navPages.innerHTML = '';
 }
 
 const reduceTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(" ").reduce((prev, cur) => {
-            if (prev + cur.length  <= limit) {
+            if (prev + cur.length <= limit) {
                 newTitle.push(cur);
             }
             return prev + cur.length;
@@ -21,7 +23,7 @@ const reduceTitle = (title, limit = 17) => {
     }
     return title;
 };
-const renderRecipe = recipe =>{
+const renderRecipe = recipe => {
     const string = `
           <li>
               <a class="results__link results__link--active" href="${recipe.recipe_id}">
@@ -34,8 +36,8 @@ const renderRecipe = recipe =>{
     elements.searchResults.insertAdjacentHTML("beforeend", string);
 }
 
-const createButton = (page, type) => 
-                `<button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
+const createButton = (page, type) =>
+    `<button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
                     <span>Page ${type === 'prev' ? page - 1 : page + 1} </span>
                     <svg class="search__icon">
                         <use href = "img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"> </use>
@@ -47,24 +49,30 @@ const createButton = (page, type) =>
 const navPages = (page, totalResult, numPerPage) => {
     const pages = Math.ceil(totalResult / numPerPage);
     let button;
-    if(page === 1 && pages > 1){
-        button = createButton(page, 'next');
-        // Prev button
-    }else if(page < pages){
-        button = 
-        `${createButton(page, 'prev')}
+    if (totalResult > 0 || totalResult > 10) {
+        if (page === 1 && pages > 1) {
+            button = createButton(page, 'next');
+            // Prev button
+        } else if (page < pages) {
+            button =
+                `${createButton(page, 'prev')}
         ${createButton(page, 'next')}`;
 
-    }else if(page === pages && pages > 1){
-        button = createButton(page, 'prev');
+        } else if (page === pages && pages > 1) {
+            button = createButton(page, 'prev');
+        }
+    }else{
+        elements.navPages.innerHTML = 'Sorry no results';
+        button = '';
     }
+
     elements.navPages.insertAdjacentHTML("afterbegin", button);
 }
 
-export const renderResult = (recipes, page = 1, resPerPage = 10)=>{
+export const renderResult = (recipes, page = 1, resPerPage = 10) => {
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
-     console.log(`${start} end: ${end} `);
+    console.log(`${start} end: ${end} `);
     recipes.slice(start, end).forEach(renderRecipe);
 
     navPages(page, recipes.length, resPerPage);
