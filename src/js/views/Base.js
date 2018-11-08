@@ -4,7 +4,8 @@ export const elements = {
     searchForm: document.querySelector(".search"),
     searchResults: document.querySelector(".results__list"),
     searchRes: document.querySelector(".results"),
-    navPages: document.querySelector(".results__pages")
+    navPages: document.querySelector(".results__pages"),
+    btnClosest: document.querySelector(".btn-inline")
 };
 
 export const elementStrings = {

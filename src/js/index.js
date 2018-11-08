@@ -35,6 +35,15 @@ elements.searchForm.addEventListener('submit', e => {
     }
 });
 
+elements.navPages.addEventListener('click', e => {
+    const btn = e.target.closest(".btn-inline");
+    if(btn){
+         searchView.clearResult();
+         const gotoToPage = parseInt(btn.dataset.goto, 10);
+         searchView.renderResult(state.search.result, gotoToPage);
+    }
+});
+
 
 
 
