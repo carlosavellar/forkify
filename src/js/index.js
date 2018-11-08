@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView.js';
 import {
     elements,
@@ -21,7 +22,7 @@ const controlResults = async () => {
         searchView.clearInput();
 
         clearLeader();
-        searchView.renderResult(state.search.result);
+        // searchView.renderResult(state.search.result);
 
 
     }
@@ -44,8 +45,11 @@ elements.navPages.addEventListener('click', e => {
     }
 });
 
+const r = new Recipe(46956);
+r.getRecipe();
+console.log(r);
 
-
+r.getrIgredients(r);
 
 
 
