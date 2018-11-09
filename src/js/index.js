@@ -46,12 +46,22 @@ console.log(r);
 
 // r.getrIgredients(r);
 
-const controlRecipe = () => {
-    const id = window.location.hash;
+const controlRecipe = async () => {
+    const id = window.location.hash.replace('#', '');
     console.log(id);
+    if (id){
+        state.recipe = new Recipe(id);
+        try{
+            await state.recipe.getRecipe();
+            state.recipe.getrIgredients();
+            console.log(state.recipe);
+        }catch(err){
+            console.log(err);
+        }
+    }
 }
 
-window.addEventListener("hashchange", controlRecipe);
+["hashchange", "onload"].forEach(event=>window.addEventListener(event, controlRecipe));
 
 //Import  1
 // import { add, multiply, ID, restDivision}  from './views/searchView';
