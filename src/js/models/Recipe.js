@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-    key,
-    proxy
-} from './config.js';
-
+import { key, proxy } from '../config.js';
 export default class Recipe {
     constructor(id) {
         this.id = id;
@@ -23,9 +19,8 @@ export default class Recipe {
     getrIgredients() {
         const numIng = this.ingredients.length;
         const periods = Math.ceil(numIng / 3);
-        this.time = periods;
+        this.time = periods * 15;
     }
-
 }
-// const r = new Recipe(46956);
-// console.log(r)
+const r = new Recipe(46956);
+console.log(r)

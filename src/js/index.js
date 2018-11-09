@@ -1,16 +1,12 @@
 import Search from './models/Search';
-// import Recipe from './models/Recipe';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView.js';
-import {
-    elements,
-    rendeLoader,
-    clearLeader
-} from './views/base.js';
+import { elements, rendeLoader, clearLeader } from './views/base.js';
 
 const state = {};
 
 const controlResults = async () => {
-    console.log(searchView.getInput());
+    // console.log(searchView.getInput());
     const query = searchView.getInput();
     if (query) {
         searchView.clearResult();
@@ -22,7 +18,8 @@ const controlResults = async () => {
         searchView.clearInput();
 
         clearLeader();
-        // searchView.renderResult(state.search.result);
+        searchView.renderResult(state.search.result);
+
     }
 }
 elements.searchForm.addEventListener('submit', e => {
@@ -36,20 +33,25 @@ elements.searchForm.addEventListener('submit', e => {
 
 elements.navPages.addEventListener('click', e => {
     const btn = e.target.closest(".btn-inline");
-    if(btn){
-         searchView.clearResult();
-         const gotoToPage = parseInt(btn.dataset.goto, 10);
-         searchView.renderResult(state.search.result, gotoToPage);
+    if (btn) {
+        searchView.clearResult();
+        const gotoToPage = parseInt(btn.dataset.goto, 10);
+        searchView.renderResult(state.search.result, gotoToPage);
     }
 });
 
-// const r = new Recipe(46956);
-// r.getRecipe();
-// console.log(r);
+const r = new Recipe(46956);
+r.getRecipe();
+console.log(r);
 
-// r.getrIgredients();
+// r.getrIgredients(r);
 
+const controlRecipe = () => {
+    const id = window.location.hash;
+    console.log(id);
+}
 
+window.addEventListener("hashchange", controlRecipe);
 
 //Import  1
 // import { add, multiply, ID, restDivision}  from './views/searchView';

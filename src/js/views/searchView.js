@@ -1,6 +1,4 @@
-import {
-    elements
-} from './base.js';
+import { elements } from './base.js';
 export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => elements.searchInput.value = '';
@@ -26,14 +24,13 @@ const reduceTitle = (title, limit = 17) => {
 const renderRecipe = recipe => {
     const string = `
           <li>
-              <a class="results__link results__link--active" href="${recipe.recipe_id}">
+              <a class="results__link results__link--active" href="#${recipe.recipe_id}">
               <figure class="results__fig">
               <img src="${recipe.image_url}" alt="Test">
               </figure> <div class="results__data">
               <h4 class="results__name"> ${reduceTitle(recipe.title)}</h4> 
               <p class="results__author"> ${recipe.publisher}</p></div></a></li>
     `;
-    console.log(string);
     elements.searchResults.insertAdjacentHTML("beforeend", string);
 }
 
@@ -44,8 +41,6 @@ const createButton = (page, type) =>
                         <use href = "img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"> </use>
                     </svg>
                 </button>`;
-
-
 
 const navPages = (page, totalResult, numPerPage) => {
     const pages = Math.ceil(totalResult / numPerPage);
@@ -64,7 +59,7 @@ const navPages = (page, totalResult, numPerPage) => {
         }
     }else{
         elements.navPages.innerHTML = 'Sorry no results';
-        button = '';
+        button = 'Heee';
     }
     elements.navPages.insertAdjacentHTML("afterbegin", button);
 }
@@ -81,3 +76,5 @@ export const renderResult = (recipes, page = 1, resPerPage = 10) => {
 // export const multiply = (a, b ) => a * b;
 // export const ID = 23;
 // export const restDivision = (a, b) =>  a % b === 0 ? 'ok' : 'not ok' ;
+
+
