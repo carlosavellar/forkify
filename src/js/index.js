@@ -1,5 +1,5 @@
 import Search from './models/Search';
-import Recipe from './models/Recipe';
+// import Recipe from './models/Recipe';
 import * as searchView from './views/searchView.js';
 import {
     elements,
@@ -23,8 +23,6 @@ const controlResults = async () => {
 
         clearLeader();
         // searchView.renderResult(state.search.result);
-
-
     }
 }
 elements.searchForm.addEventListener('submit', e => {
@@ -45,11 +43,11 @@ elements.navPages.addEventListener('click', e => {
     }
 });
 
-const r = new Recipe(46956);
-r.getRecipe();
-console.log(r);
+// const r = new Recipe(46956);
+// r.getRecipe();
+// console.log(r);
 
-r.getrIgredients(r);
+// r.getrIgredients();
 
 
 

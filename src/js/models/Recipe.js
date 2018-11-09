@@ -22,10 +22,10 @@ export default class Recipe {
     }
     getrIgredients() {
         const numIng = this.ingredients.length;
-        const periods = numIng / 3;
+        const periods = Math.ceil(numIng / 3);
         this.time = periods;
     }
 
 }
-const r = new Recipe(46956);
-console.log(r)
+// const r = new Recipe(46956);
+// console.log(r)

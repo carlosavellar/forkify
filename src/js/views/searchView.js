@@ -33,6 +33,7 @@ const renderRecipe = recipe => {
               <h4 class="results__name"> ${reduceTitle(recipe.title)}</h4> 
               <p class="results__author"> ${recipe.publisher}</p></div></a></li>
     `;
+    console.log(string);
     elements.searchResults.insertAdjacentHTML("beforeend", string);
 }
 
@@ -56,7 +57,7 @@ const navPages = (page, totalResult, numPerPage) => {
         } else if (page < pages) {
             button =
                 `${createButton(page, 'prev')}
-        ${createButton(page, 'next')}`;
+                 ${createButton(page, 'next')}`;
 
         } else if (page === pages && pages > 1) {
             button = createButton(page, 'prev');
@@ -65,7 +66,6 @@ const navPages = (page, totalResult, numPerPage) => {
         elements.navPages.innerHTML = 'Sorry no results';
         button = '';
     }
-
     elements.navPages.insertAdjacentHTML("afterbegin", button);
 }
 
