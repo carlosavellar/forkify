@@ -21,6 +21,20 @@ export default class Recipe {
         const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
     }
+    parseIngredientes(){
+        const unitLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces','teaspoon', 'teaspoons', 'cups', 'pounds' ];
+        const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound' ];
+        const newIngredients = this.ingredients.map(el=>{
+            let ingredient = el.toLoweCase();
+            this.ingredients.forEach((unit, i)=>{
+                ingredient = ingredient.replace(unit, unitShort[i]);
+            });
+
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+        });
+        this.ingredients = newIngredients;
+
+    }
 }
 const r = new Recipe(46956);
 console.log(r)
