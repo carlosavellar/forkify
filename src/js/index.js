@@ -7,14 +7,17 @@ const state = {};
 
 const controlResults = async () => {
     // console.log(searchView.getInput());
-    const query = searchView.getInput();
+    // const query = searchView.getInput;
+    const query = 'pizza';
     if (query) {
         searchView.clearResult();
         state.search = new Search(query);
+
+        
         rendeLoader(elements.searchRes);
-
+        
         await state.search.getResults();
-
+        
         searchView.clearInput();
 
         clearLeader();
@@ -30,6 +33,11 @@ elements.searchForm.addEventListener('submit', e => {
         alert("Caralho! Prrencha essa MERDA FILHA DA PUTA");
     }
 });
+window.addEventListener('load', e => {
+    e.preventDefault();
+    controlResults();
+
+});
 
 
 elements.navPages.addEventListener('click', e => {
@@ -41,9 +49,9 @@ elements.navPages.addEventListener('click', e => {
     }
 });
 
-const r = new Recipe(46956);
-r.getRecipe();
-console.log(r);
+// const r = new Recipe(46956);
+// r.getRecipe();
+// console.log(r);
 
 // r.getrIgredients(r);
 
@@ -52,6 +60,7 @@ const controlRecipe = async () => {
     console.log(id);
     if (id){
         state.recipe = new Recipe(id);
+        window.r = state.recipe;
         try{
             await state.recipe.getRecipe();
             state.recipe.getrIgredients();
