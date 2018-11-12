@@ -12,6 +12,7 @@ export default class Recipe {
             this.publisher = res.data.recipe.publisher;
             this.image = res.data.recipe.image_url;
             this.ingredients = res.data.recipe.ingredients;
+            this.url = res.data.recipe.source_url;
             console.log(res);
         } catch (error) {
             console.log(`Not possible to render some result ${error}`);
@@ -22,7 +23,10 @@ export default class Recipe {
         const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
     }
-    parseIngredientes(){
+    getServings(){
+        this.servings = 4;
+    }
+    parseIngredients(){
         const unitLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces','teaspoon', 'teaspoons', 'cups', 'pounds' ];
         const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound' ];
         const newIngredients = this.ingredients.map(el=>{

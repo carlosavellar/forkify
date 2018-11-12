@@ -1,23 +1,27 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
-import * as searchView from './views/searchView.js';
+import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import { elements, rendeLoader, clearLeader } from './views/base.js';
 
 const state = {};
 
 const controlResults = async () => {
     // console.log(searchView.getInput());
-    // const query = searchView.getInput;
-    const query = 'pizza';
+    const query = searchView.getInput;
+    // const query = 'pizza';
     if (query) {
         searchView.clearResult();
         state.search = new Search(query);
 
-        
+        window.r = state.search;
+
         rendeLoader(elements.searchRes);
-        
+
         await state.search.getResults();
-        
+         
+        state.search.parseIngredients();
+
         searchView.clearInput();
 
         clearLeader();
@@ -33,11 +37,11 @@ elements.searchForm.addEventListener('submit', e => {
         alert("Caralho! Prrencha essa MERDA FILHA DA PUTA");
     }
 });
-window.addEventListener('load', e => {
-    e.preventDefault();
-    controlResults();
+// window.addEventListener('load', e => {
+//     e.preventDefault();
+//     controlResults();
 
-});
+// });
 
 
 elements.navPages.addEventListener('click', e => {
@@ -58,13 +62,21 @@ elements.navPages.addEventListener('click', e => {
 const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
     console.log(id);
+    
     if (id){
+        rendeLoader(elements.recipeBase);
         state.recipe = new Recipe(id);
-        window.r = state.recipe;
         try{
             await state.recipe.getRecipe();
             state.recipe.getrIgredients();
+            state.recipe.
+            recipeView.renderRecipe(state.recipe);
+            recipeView.getrIgredients();
+
+
+
             console.log(state.recipe);
+            clearLeader();
         }catch(err){
             console.log(err);
         }
